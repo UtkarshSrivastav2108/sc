@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+
+<body>
+
+    <div class="table-container">
+        <label>Search:</label><input type="text" onkeyup="filter(event)">
+        <table id="easy-table" class="table is-striped is-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Gere</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div id="paginator"></div>
+    </div>
+
+    <script src="../assets/js/tabel.js"></script>
+    <script>
+        // dummy data
+        const NAMES = ['Paul', 'Anne', 'Benji', 'Carl', 'Sarah', 'Julie', 'Ryan', 'Steve', 'Peter', 'Samantha'];
+        const LAST_NAMES = ['Smith', 'Anderson', 'Morrison', 'Kane', 'Ferguson', 'Warner', 'Hammer', 'Phillips', 'Thompson', 'Chang'];
+        const COUNTRIES = ['South Africa', 'England', 'Australia', 'Mexico', 'China', 'Japan', 'Honduras', 'Canada', 'France', 'Spain']
+
+        let data = [];
+        for (let i = 0; i < 100; i++) {
+            let row = {
+                id: i,
+                name: NAMES[Math.floor(Math.random() * 10)],
+                last_name: LAST_NAMES[Math.floor(Math.random() * 10)],
+                country: COUNTRIES[Math.floor(Math.random() * 10)],
+                age: Math.floor(Math.random() * 99)
+            }
+            data.push(row);
+        }
+
+        // required options
+        const options = {
+            tableId: 'easy-table',
+            currentPage: 1,
+            perPage: 10,
+            autoHeaders: true,
+            arrowUp: '⇑',
+            arrowDown: '⇓',
+            previousText: '&#10094',
+            nextText: '&#10095',
+        }
+
+        setTable(data, options);
+
+    </script>
+</body>
+
+</html>
